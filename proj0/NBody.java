@@ -4,7 +4,7 @@ public class NBody{
 		double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
 		double r = readRadius(filename);
-		Body[] bodys = readBodies(filename);
+		Planet[] bodys = readBodies(filename);
 		//System.out.println(readRadius(filename));
 
 
@@ -66,7 +66,7 @@ public class NBody{
 		double radius = in.readDouble();
 		return radius;
 	}
-	public static Body[] readBodies(String filename){
+	public static Planet[] readBodies(String filename){
 		if(filename.length() == 0){
 			System.out.println("Please enter a valid name of the file.");
 		}
@@ -74,7 +74,7 @@ public class NBody{
 		// the nume of the plane, use it in the later loop;
 		int num = in.readInt();
 		double radius = in.readDouble();
-		Body[] bodyarray = new Body[num];
+		Planet[] bodyarray = new Planet[num];
 		for(int i = 0; i < num; i++){
 			double xp = in.readDouble();
 			double yp = in.readDouble();
@@ -83,7 +83,7 @@ public class NBody{
 			double m = in.readDouble();
 			String name = in.readString();
 			// 下面这个地方需要用到 new，因为是新定义的一个body，而不是原来就有的body。所以还是需要new/
-			bodyarray[i] = new Body(xp,yp,xv,yv,m,name); 
+			bodyarray[i] = new Planet(xp,yp,xv,yv,m,name); 
 
 		}
 		return bodyarray;
