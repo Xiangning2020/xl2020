@@ -4,7 +4,7 @@ public class NBody{
 		double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
 		double r = readRadius(filename);
-		Planet[] bodys = readBodies(filename);
+		Planet[] bodys = readPlanets(filename);
 		//System.out.println(readRadius(filename));
 
 
@@ -66,7 +66,7 @@ public class NBody{
 		double radius = in.readDouble();
 		return radius;
 	}
-	public static Planet[] readBodies(String filename){
+	public static Planet[] readPlanets(String filename){
 		if(filename.length() == 0){
 			System.out.println("Please enter a valid name of the file.");
 		}
