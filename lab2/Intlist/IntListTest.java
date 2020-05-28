@@ -47,6 +47,16 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), L);
         assertEquals(IntList.of(1, 4, 9), res);
     }
+    @Test
+    public void testSquareListIterative() {
+        IntList L = IntList.of(1, 2, 3);
+        IntList res = IntList.squareListIterative(L);// rethink for a while why this time L is not changed
+        // the gold rule tells us only the bits are copied, so when we use the argument L, the address where
+        // we store the numbers/the boxes are copied, they all point(pointers are exactly the address) to the same
+        //address, even if we use L = L.rest, the values in the address are not changed at all.
+        assertEquals(IntList.of(1, 2, 3), L);
+        assertEquals(IntList.of(1, 4, 9), res);
+    }
 
     @Test
     public void testDcatenate() {

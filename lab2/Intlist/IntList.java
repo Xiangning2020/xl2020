@@ -44,6 +44,10 @@ public class IntList {
         }
     }
 
+    // same way to understand, even if we also use L in this case, but we change the values of the content in the boxes
+    // or the address, and we use that address
+
+
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
      */
@@ -81,23 +85,28 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        //IntList res = new IntList(A.first, A.rest);
+        IntList res = A;
+        if(A == null) return B;
+        while(A.rest != null){
+            A = A.rest;
+        }
+        A.rest = B;// we change the content of the final box of A, which means we change the content of that address
+        return res;
     }
 
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
+
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if(A == null) {
+            return B;
+        }
+        return new IntList(A.first, catenate(A.rest,B));
+
     }
-
-
-
-
-
 
 
 
