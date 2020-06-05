@@ -11,7 +11,8 @@ public class ArrayDeque<T> {
     public void addFirst(T x) {
         size = size + 1;
         T[] newitems = (T[]) new Object[size];
-        System.arraycopy(items, 0, newitems, 1, size - 1);
+
+        System.arraycopy(items, 0, newitems, 1, size);
         newitems[0] = x;
         items = newitems;
     }
@@ -24,7 +25,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T x) {
         if (size == items.length) {
-            resize(size + 1);
+            resize(size*5);
         }
         items[size] = x;
         size = size + 1;
@@ -48,6 +49,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (size == 0) {
+            return null;
+        }
         T a = items[0];
         size = size - 1;
         T[] newitems = (T[]) new Object[size];
@@ -57,6 +61,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
         T a = items[size - 1];
         items[size - 1] = null;
         size = size - 1;
