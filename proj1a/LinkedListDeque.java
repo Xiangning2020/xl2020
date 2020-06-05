@@ -1,7 +1,6 @@
 public class LinkedListDeque<T> {
     private Node sentinel;
     private int size;
-
     private class Node {
         private T item;
         private Node prev;
@@ -17,24 +16,6 @@ public class LinkedListDeque<T> {
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
-    }
-    public LinkedListDeque(LinkedListDeque other) {
-        if (other.size() == 0) {
-            return;
-        }
-        Node Nodeother = other.sentinel.next;
-        size = other.size();
-        Node newother = new Node(Nodeother.item, sentinel, null);
-        Node head = newother;
-
-        while (other != null) {
-            Nodeother = Nodeother.next;
-            newother.next = new Node(Nodeother.item, newother, null);
-            newother = newother.next;
-        }
-        sentinel.next = head;
-        sentinel.prev = newother;
-        newother.next = sentinel;
     }
     public void addFirst(T item) {
         Node oldfirst = sentinel.next; //Refer to the old first by sentinel.
@@ -64,7 +45,6 @@ public class LinkedListDeque<T> {
         }
         System.out.println();
     }
-
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -74,9 +54,6 @@ public class LinkedListDeque<T> {
         sentinel.next = newfirst;
         newfirst.prev = sentinel;
         size = size - 1;
-        if (size == 0) {
-            return null;
-        }
         return oldfirst.item;
 
     }
@@ -89,13 +66,10 @@ public class LinkedListDeque<T> {
         sentinel.prev = newlast;
         newlast.next = sentinel;
         size = size - 1;
-        if (size == 0) {
-            return null;
-        }
         return oldlast.item;
     }
     public T get(int index) {
-        if ( index > size - 1 || index < 0) {
+        if (index > size - 1 || index < 0) {
             return null;
         }
         int i = 0;

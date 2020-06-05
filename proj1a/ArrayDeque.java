@@ -6,10 +6,7 @@ public class ArrayDeque<T> {
         items = (T[]) new Object[8];
         size = 0;
     }
-    public ArrayDeque(ArrayDeque other) {
-        size = other.size();
-        System.arraycopy(other.items, 0, items, 0, size);
-    }
+
     // Add the last item of to the array
     public void addFirst(T x) {
         size = size + 1;
@@ -19,9 +16,9 @@ public class ArrayDeque<T> {
         items = newitems;
     }
 
-    public void resize(int newsize) {
+    private void resize(int newsize) {
         T[] newitems = (T[]) new Object[newsize];
-        System.arraycopy(items, 0, newitems, 0,size);
+        System.arraycopy(items, 0, newitems, 0, size);
         items = newitems;
     }
 
