@@ -18,7 +18,7 @@ public class LinkedListDeque<T> {
         size = 0;
     }
     public void addFirst(T item) {
-        Node oldfirst = sentinel.next; //Refer to the old first by sentinel.
+        Node oldfirst = sentinel.next;
         Node newfirst = new Node(item, sentinel, oldfirst);
         sentinel.next = newfirst;
         oldfirst.prev = newfirst;
@@ -55,7 +55,6 @@ public class LinkedListDeque<T> {
         newfirst.prev = sentinel;
         size = size - 1;
         return oldfirst.item;
-
     }
     public T removeLast() {
         if (size == 0) {
@@ -88,7 +87,8 @@ public class LinkedListDeque<T> {
         if (index == 0) {
             return first.item;
         }
-        first = first.next;
-        return this.getRecursive(index - 1);
+        sentinel = sentinel.next;
+        size = size - 1;
+        return getRecursive(index - 1);
     }
 }
